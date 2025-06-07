@@ -1,0 +1,271 @@
+/* Estilos gerais */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    color: #fff;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    box-sizing: border-box;
+    text-align: center;
+    overflow: hidden;
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    max-width: 800px;
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    margin-bottom: 15px;
+}
+
+header h1 {
+    font-family: 'Righteous', cursive;
+    color: #4ecca3;
+    margin: 0 0 15px 0;
+    font-size: 2em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Barra de Progresso */
+.progress-container {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 3px;
+    margin: 10px 0;
+    position: relative;
+    height: 10px;
+}
+
+.progress-bar {
+    background: linear-gradient(90deg, #4ecca3 0%, #2ecc71 100%);
+    height: 100%;
+    border-radius: 8px;
+    width: 0%;
+    transition: width 0.5s ease-in-out;
+}
+
+.progress-text {
+    position: absolute;
+    top: -20px;
+    right: 0;
+    font-size: 0.9em;
+    color: #4ecca3;
+}
+
+/* Estilos da área do jogo */
+#game-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+#game-area p {
+    font-size: 1.1em;
+    line-height: 1.4;
+    margin: 10px 0;
+}
+
+.story-intro {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 15px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+
+.story-intro h2 {
+    color: #4ecca3;
+    margin: 0 0 15px 0;
+    font-size: 1.5em;
+}
+
+.clue-container {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 15px;
+    border-radius: 15px;
+    margin: 15px 0;
+}
+
+#clue-text {
+    font-weight: 600;
+    color: #fff;
+    min-height: 40px;
+    margin: 10px 0;
+}
+
+input[type="text"] {
+    width: calc(100% - 24px);
+    padding: 10px;
+    margin: 10px 0;
+    border: 2px solid rgba(78, 204, 163, 0.3);
+    border-radius: 10px;
+    font-size: 1em;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+/* Estilo para todos os botões do jogo */
+button {
+    background: linear-gradient(45deg, #4ecca3, #2ecc71);
+    color: #fff;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin: 10px 0;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
+}
+
+button:active {
+    transform: translateY(1px);
+}
+
+#feedback-message {
+    margin: 15px 0;
+    font-weight: bold;
+    min-height: 40px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.feedback-correct {
+    color: #4ecca3;
+    font-size: 1.1em;
+    line-height: 1.4;
+}
+
+.feedback-incorrect {
+    color: #ff6b6b;
+}
+
+/* Telas do jogo */
+#start-screen, #clue-screen, #treasure-screen {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.3s ease;
+    padding: 20px 0;
+}
+
+#treasure-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100%;
+    padding: 20px;
+}
+
+.treasure-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+#treasure-message {
+    text-align: center;
+    line-height: 1.5;
+    margin: 10px 0;
+}
+
+#restart-button {
+    margin-top: -10px;
+    padding: 12px 30px;
+    font-size: 1.1em;
+    clear: both;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Animações */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Resto das animações existentes... */
+.shake {
+    animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+@keyframes shake {
+    10%, 90% { transform: translateX(-2px); }
+    20%, 80% { transform: translateX(4px); }
+    30%, 50%, 70% { transform: translateX(-8px); }
+    40%, 60% { transform: translateX(8px); }
+}
+
+.bounce {
+    animation: bounce 0.7s;
+}
+
+@keyframes bounce {
+    0%   { transform: translateY(0); }
+    20%  { transform: translateY(-18px); }
+    40%  { transform: translateY(-8px); }
+    60%  { transform: translateY(-18px); }
+    80%  { transform: translateY(-4px); }
+    100% { transform: translateY(0); }
+}
+
+/* Responsividade */
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+    .container {
+        padding: 20px;
+    }
+    header h1 {
+        font-size: 1.8em;
+    }
+    button {
+        padding: 10px 20px;
+        font-size: 1em;
+    }
+}
+
+/* Transições suaves para elementos principais */
+#clue-text, #feedback-message, #treasure-message, #clue-gif img {
+    transition: all 0.3s cubic-bezier(.23,1.02,.64,1);
+}

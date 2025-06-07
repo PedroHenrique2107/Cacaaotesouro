@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caça ao Tesouro!</title>
+    <!-- Fontes do Google - Pode trocar por outras fontes se desejar -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Righteous&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- ===== CABEÇALHO ===== -->
+        <header>
+            <!-- Título Principal - Pode editar o texto e os emojis -->
+            <h1>🔍 Operação: Caça ao Tesouro! 🔍</h1>
+            
+            <!-- Barra de Progresso - O texto é atualizado via JavaScript -->
+            <div class="progress-container">
+                <div class="progress-bar" id="progress-bar"></div>
+                <div class="progress-text" id="progress-text">Pista 1 de 3</div>
+            </div>
+        </header>
+
+        <main id="game-area">
+            <!-- ===== TELA INICIAL ===== -->
+            <!-- Edite os textos abaixo para personalizar a introdução -->
+            <div id="start-screen">
+                <div class="story-intro">
+                    <h2>Missão: Operação Presente Secreto</h2>
+                    <p>Agente especial, você foi designada para uma missão de extrema importância!</p>
+                    <p>Um valioso tesouro foi escondido e apenas você tem as habilidades necessárias para encontrá-lo.</p>
+                    <p>Para completar sua missão, você precisará desvendar uma série de pistas enigmáticas.</p>
+                    <p>Está pronta para aceitar este desafio?</p>
+                </div>
+                <!-- Botão Iniciar - Pode editar o texto -->
+                <button id="start-button">Iniciar Missão!</button>
+            </div>
+
+            <!-- ===== TELA DE PISTAS ===== -->
+            <div id="clue-screen" class="hidden">
+                <!-- Gif da pista - URLs definidas no script.js -->
+                <div id="clue-gif" style="margin-bottom: 10px;"></div>
+                
+                <!-- Container da Pista - Número e texto da pista são atualizados via JavaScript -->
+                <div class="clue-container">
+                    <h3>Pista #<span id="clue-number">1</span></h3>
+                    <p id="clue-text">Aqui vai a primeira pista...</p>
+                </div>
+                
+                <!-- Campo de Resposta - Placeholder pode ser editado -->
+                <input type="text" id="answer-input" placeholder="Digite sua resposta aqui" autocomplete="off">
+                <!-- Botão Enviar - Pode editar o texto -->
+                <button id="submit-button">Enviar Resposta</button>
+                <!-- Mensagem de Feedback - Atualizada via JavaScript -->
+                <p id="feedback-message"></p>
+            </div>
+
+            <!-- ===== TELA FINAL ===== -->
+            <!-- Edite os textos abaixo para personalizar a tela de vitória -->
+            <div id="treasure-screen" class="hidden">
+                <div class="treasure-content">
+                    <h2>🎉 Missão Cumprida! 🎉</h2>
+                    <p id="treasure-message">Parabéns, agente! Você encontrou o tesouro! Aqui está sua recompensa especial!</p>
+                    <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOGZjYnBncjdjc2N4dTVqcG4zcG14anYzZ3dxNnZyaXo5MWs4cXhueCZlcD12MV9naWZzX3RyZW5kaW5nJmN0PWc/ioWaevqsBvyD8O4VAW/giphy.gif" alt="Tesouro!" style="max-width: 200px; border-radius: 8px; margin: 20px auto;">
+                    <button id="restart-button">Iniciar Nova Missão</button>
+                </div>
+            </div>
+        </main>
+
+        <!-- ===== RODAPÉ ===== -->
+        <!-- Edite o texto do rodapé -->
+        <footer>
+            <p>Operação Presente Secreto - Desenvolvido com ❤️</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
