@@ -4,65 +4,77 @@ body {
     background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
     color: #fff;
     margin: 0;
-    padding: 20px;
+    padding: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     box-sizing: border-box;
     text-align: center;
-    overflow: hidden;
+    overflow-x: hidden;
+    /* Prevenção de seleção de texto em mobile */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    /* Prevenção de zoom em double-tap */
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .container {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
-    padding: 20px;
-    border-radius: 20px;
+    padding: 15px;
+    border-radius: 15px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-    max-width: 800px;
+    max-width: 95vw;
     width: 100%;
     border: 1px solid rgba(255, 255, 255, 0.2);
-    max-height: 90vh;
+    max-height: 95vh;
     display: flex;
     flex-direction: column;
+    overflow-y: auto;
+    /* Melhor scroll em mobile */
+    -webkit-overflow-scrolling: touch;
 }
 
 header {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 header h1 {
     font-family: 'Righteous', cursive;
     color: #4ecca3;
-    margin: 0 0 15px 0;
-    font-size: 2em;
+    margin: 0 0 10px 0;
+    font-size: clamp(1.5em, 5vw, 2em);
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    line-height: 1.2;
 }
 
 /* Barra de Progresso */
 .progress-container {
     background: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    padding: 3px;
-    margin: 10px 0;
+    border-radius: 8px;
+    padding: 2px;
+    margin: 8px 0;
     position: relative;
-    height: 10px;
+    height: 8px;
 }
 
 .progress-bar {
     background: linear-gradient(90deg, #4ecca3 0%, #2ecc71 100%);
     height: 100%;
-    border-radius: 8px;
+    border-radius: 6px;
     width: 0%;
     transition: width 0.5s ease-in-out;
 }
 
 .progress-text {
     position: absolute;
-    top: -20px;
+    top: -18px;
     right: 0;
-    font-size: 0.9em;
+    font-size: 0.8em;
     color: #4ecca3;
 }
 
@@ -74,67 +86,92 @@ header h1 {
     justify-content: center;
     position: relative;
     overflow: hidden;
+    min-height: 60vh;
 }
 
 #game-area p {
-    font-size: 1.1em;
+    font-size: clamp(0.9em, 3vw, 1.1em);
     line-height: 1.4;
-    margin: 10px 0;
+    margin: 8px 0;
 }
 
 .story-intro {
     background: rgba(255, 255, 255, 0.05);
-    padding: 15px;
-    border-radius: 15px;
-    margin-bottom: 20px;
+    padding: 12px;
+    border-radius: 12px;
+    margin-bottom: 15px;
 }
 
 .story-intro h2 {
     color: #4ecca3;
-    margin: 0 0 15px 0;
-    font-size: 1.5em;
+    margin: 0 0 10px 0;
+    font-size: clamp(1.2em, 4vw, 1.5em);
 }
 
 .clue-container {
     background: rgba(255, 255, 255, 0.05);
-    padding: 15px;
-    border-radius: 15px;
-    margin: 15px 0;
+    padding: 12px;
+    border-radius: 12px;
+    margin: 10px 0;
 }
 
 #clue-text {
     font-weight: 600;
     color: #fff;
-    min-height: 40px;
-    margin: 10px 0;
+    min-height: 30px;
+    margin: 8px 0;
+    font-size: clamp(0.9em, 3vw, 1em);
 }
 
 input[type="text"] {
-    width: calc(100% - 24px);
-    padding: 10px;
-    margin: 10px 0;
+    width: calc(100% - 20px);
+    padding: 8px;
+    margin: 8px 0;
     border: 2px solid rgba(78, 204, 163, 0.3);
-    border-radius: 10px;
-    font-size: 1em;
+    border-radius: 8px;
+    font-size: clamp(0.9em, 3vw, 1em);
     background: rgba(255, 255, 255, 0.1);
     color: #fff;
     transition: all 0.3s ease;
+    box-sizing: border-box;
+    /* Permitir seleção de texto apenas no input */
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+    /* Melhor experiência touch */
+    -webkit-appearance: none;
+    appearance: none;
 }
 
 /* Estilo para todos os botões do jogo */
 button {
     background: linear-gradient(45deg, #4ecca3, #2ecc71);
     color: #fff;
-    padding: 10px 25px;
+    padding: clamp(8px, 2.5vw, 12px) clamp(15px, 4vw, 25px);
     border: none;
-    border-radius: 10px;
-    font-size: 1em;
+    border-radius: 8px;
+    font-size: clamp(0.8em, 2.5vw, 1em);
     cursor: pointer;
     transition: all 0.3s ease;
     text-transform: uppercase;
     font-weight: 600;
-    letter-spacing: 1px;
-    margin: 10px 0;
+    letter-spacing: 0.5px;
+    margin: 8px 0;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Melhor experiência touch */
+    -webkit-tap-highlight-color: rgba(78, 204, 163, 0.3);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    /* Área de toque maior */
+    position: relative;
+    overflow: hidden;
 }
 
 button:hover {
@@ -144,21 +181,42 @@ button:hover {
 
 button:active {
     transform: translateY(1px);
+    background: linear-gradient(45deg, #3db892, #27ae60);
+}
+
+/* Efeito de ripple para botões em mobile */
+button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.3s, height 0.3s;
+}
+
+button:active::before {
+    width: 200px;
+    height: 200px;
 }
 
 #feedback-message {
-    margin: 15px 0;
+    margin: 10px 0;
     font-weight: bold;
-    min-height: 40px;
-    padding: 10px;
+    min-height: 30px;
+    padding: 8px;
     background: rgba(255, 255, 255, 0.05);
-    border-radius: 8px;
+    border-radius: 6px;
     transition: all 0.3s ease;
+    font-size: clamp(0.8em, 2.5vw, 1em);
 }
 
 .feedback-correct {
     color: #4ecca3;
-    font-size: 1.1em;
+    font-size: clamp(0.9em, 3vw, 1.1em);
     line-height: 1.4;
 }
 
@@ -174,7 +232,8 @@ button:active {
     justify-content: center;
     align-items: center;
     transition: opacity 0.3s ease;
-    padding: 20px 0;
+    padding: 15px 0;
+    min-height: 50vh;
 }
 
 #treasure-screen {
@@ -182,30 +241,31 @@ button:active {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 100%;
-    padding: 20px;
+    min-height: 60vh;
+    padding: 15px;
 }
 
 .treasure-content {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 15px;
-    max-width: 600px;
+    gap: 12px;
+    max-width: 90vw;
     margin: 0 auto;
-    padding: 20px;
+    padding: 15px;
 }
 
 #treasure-message {
     text-align: center;
     line-height: 1.5;
-    margin: 10px 0;
+    margin: 8px 0;
+    font-size: clamp(0.9em, 3vw, 1em);
 }
 
 #restart-button {
-    margin-top: -10px;
-    padding: 12px 30px;
-    font-size: 1.1em;
+    margin-top: 5px;
+    padding: clamp(10px, 3vw, 12px) clamp(20px, 5vw, 30px);
+    font-size: clamp(0.9em, 3vw, 1.1em);
     clear: both;
 }
 
@@ -248,24 +308,318 @@ button:active {
     100% { transform: translateY(0); }
 }
 
-/* Responsividade */
+/* Responsividade melhorada */
+@media (max-width: 768px) {
+    body {
+        padding: 5px;
+    }
+    
+    .container {
+        padding: 10px;
+        max-height: 98vh;
+        border-radius: 10px;
+    }
+    
+    header h1 {
+        font-size: clamp(1.3em, 6vw, 1.8em);
+        margin-bottom: 8px;
+    }
+    
+    #game-area {
+        min-height: 70vh;
+    }
+    
+    #game-area p {
+        font-size: clamp(0.85em, 3.5vw, 1em);
+        margin: 6px 0;
+    }
+    
+    .story-intro, .clue-container {
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+    
+    .story-intro h2 {
+        font-size: clamp(1.1em, 5vw, 1.3em);
+        margin-bottom: 8px;
+    }
+    
+    #clue-text {
+        font-size: clamp(0.85em, 3.5vw, 0.95em);
+        min-height: 25px;
+    }
+    
+    input[type="text"] {
+        padding: 12px;
+        font-size: 16px; /* Evita zoom no iOS */
+        margin: 6px 0;
+        /* Área de toque maior para input */
+        min-height: 48px;
+    }
+    
+    button {
+        padding: 14px 20px;
+        font-size: clamp(0.8em, 3vw, 0.9em);
+        min-height: 52px;
+        margin: 8px 0;
+        /* Área de toque ainda maior em mobile */
+        min-width: 120px;
+    }
+    
+    #feedback-message {
+        font-size: clamp(0.8em, 3vw, 0.9em);
+        padding: 12px;
+        margin: 8px 0;
+        min-height: 40px;
+    }
+    
+    .feedback-correct {
+        font-size: clamp(0.85em, 3.5vw, 1em);
+    }
+    
+    #treasure-message {
+        font-size: clamp(0.85em, 3.5vw, 0.95em);
+    }
+    
+    #restart-button {
+        padding: 14px 25px;
+        font-size: clamp(0.85em, 3.5vw, 1em);
+        min-height: 56px;
+    }
+    
+    #clue-gif img {
+        max-width: 120px !important;
+        max-height: 120px;
+    }
+}
+
 @media (max-width: 480px) {
     body {
-        padding: 10px;
+        padding: 3px;
     }
+    
     .container {
-        padding: 20px;
+        padding: 8px;
+        max-height: 99vh;
     }
+    
     header h1 {
-        font-size: 1.8em;
+        font-size: clamp(1.2em, 7vw, 1.5em);
+        margin-bottom: 6px;
     }
+    
+    .progress-container {
+        height: 6px;
+        margin: 6px 0;
+    }
+    
+    .progress-text {
+        font-size: 0.75em;
+        top: -16px;
+    }
+    
+    #game-area {
+        min-height: 75vh;
+    }
+    
+    #game-area p {
+        font-size: clamp(0.8em, 4vw, 0.9em);
+        margin: 5px 0;
+    }
+    
+    .story-intro, .clue-container {
+        padding: 8px;
+        margin-bottom: 8px;
+        border-radius: 8px;
+    }
+    
+    .story-intro h2 {
+        font-size: clamp(1em, 6vw, 1.2em);
+        margin-bottom: 6px;
+    }
+    
+    #clue-text {
+        font-size: clamp(0.8em, 4vw, 0.85em);
+        min-height: 20px;
+        margin: 6px 0;
+    }
+    
+    input[type="text"] {
+        padding: 14px;
+        font-size: 16px;
+        margin: 6px 0;
+        border-radius: 6px;
+        min-height: 52px;
+    }
+    
     button {
-        padding: 10px 20px;
-        font-size: 1em;
+        padding: 16px 18px;
+        font-size: clamp(0.75em, 3.5vw, 0.85em);
+        min-height: 56px;
+        margin: 6px 0;
+        border-radius: 6px;
+        min-width: 140px;
+    }
+    
+    #feedback-message {
+        font-size: clamp(0.75em, 3.5vw, 0.8em);
+        padding: 10px;
+        margin: 6px 0;
+        min-height: 30px;
+    }
+    
+    .feedback-correct {
+        font-size: clamp(0.8em, 4vw, 0.9em);
+    }
+    
+    #treasure-message {
+        font-size: clamp(0.8em, 4vw, 0.85em);
+    }
+    
+    #restart-button {
+        padding: 16px 22px;
+        font-size: clamp(0.8em, 4vw, 0.9em);
+        min-height: 60px;
+    }
+    
+    #clue-gif img {
+        max-width: 100px !important;
+        max-height: 100px;
+    }
+    
+    .treasure-content img {
+        max-width: 150px !important;
+        max-height: 150px;
+    }
+}
+
+@media (max-width: 320px) {
+    .container {
+        padding: 5px;
+    }
+    
+    header h1 {
+        font-size: clamp(1.1em, 8vw, 1.3em);
+    }
+    
+    #game-area p {
+        font-size: clamp(0.75em, 4.5vw, 0.8em);
+    }
+    
+    button {
+        padding: 18px 16px;
+        font-size: clamp(0.7em, 4vw, 0.8em);
+        min-height: 60px;
+        min-width: 160px;
+    }
+    
+    input[type="text"] {
+        padding: 16px;
+        min-height: 56px;
+    }
+}
+
+/* Orientação landscape em dispositivos móveis */
+@media (max-height: 500px) and (orientation: landscape) {
+    body {
+        padding: 2px;
+    }
+    
+    .container {
+        max-height: 98vh;
+        padding: 5px;
+    }
+    
+    header {
+        margin-bottom: 5px;
+    }
+    
+    header h1 {
+        font-size: clamp(1em, 4vw, 1.3em);
+        margin-bottom: 5px;
+    }
+    
+    #game-area {
+        min-height: 60vh;
+    }
+    
+    .story-intro, .clue-container {
+        padding: 6px;
+        margin-bottom: 5px;
+    }
+    
+    #game-area p {
+        font-size: clamp(0.7em, 2.5vw, 0.8em);
+        margin: 3px 0;
+    }
+    
+    button {
+        padding: 10px 15px;
+        font-size: clamp(0.7em, 2.5vw, 0.8em);
+        min-height: 44px;
+        margin: 4px 0;
+        min-width: 100px;
+    }
+    
+    input[type="text"] {
+        padding: 10px;
+        margin: 4px 0;
+        min-height: 44px;
+    }
+    
+    #feedback-message {
+        padding: 6px;
+        margin: 4px 0;
+        min-height: 25px;
     }
 }
 
 /* Transições suaves para elementos principais */
 #clue-text, #feedback-message, #treasure-message, #clue-gif img {
     transition: all 0.3s cubic-bezier(.23,1.02,.64,1);
+}
+
+/* Melhorias para acessibilidade */
+button:focus, input:focus {
+    outline: 2px solid #4ecca3;
+    outline-offset: 2px;
+}
+
+/* Prevenção de zoom em inputs no iOS */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+    input[type="text"] {
+        font-size: 16px;
+    }
+}
+
+/* Melhorias específicas para touch */
+@media (hover: none) and (pointer: coarse) {
+    /* Dispositivos touch-only */
+    button {
+        /* Área de toque ainda maior */
+        min-height: 48px;
+        padding: 12px 20px;
+    }
+    
+    input[type="text"] {
+        /* Área de toque maior para input */
+        min-height: 48px;
+        padding: 12px;
+    }
+    
+    /* Feedback visual melhorado para touch */
+    button:active {
+        transform: scale(0.98);
+        background: linear-gradient(45deg, #3db892, #27ae60);
+    }
+    
+    /* Prevenção de seleção de texto em elementos clicáveis */
+    button, .clue-container, .story-intro {
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
 }

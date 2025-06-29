@@ -1,6 +1,28 @@
 // Espera o HTML carregar completamente antes de executar o script
 document.addEventListener('DOMContentLoaded', () => {
 
+    // ===== MELHORIAS PARA DISPOSITIVOS MÓVEIS =====
+    // Prevenção de double-tap zoom
+    let lastTouchEnd = 0;
+    document.addEventListener('touchend', function (event) {
+        const now = (new Date()).getTime();
+        if (now - lastTouchEnd <= 300) {
+            event.preventDefault();
+        }
+        lastTouchEnd = now;
+    }, false);
+
+    // Prevenção de zoom em double-tap em inputs
+    const inputs = document.querySelectorAll('input[type="text"]');
+    inputs.forEach(input => {
+        input.addEventListener('touchstart', function(e) {
+            // Permite apenas um toque por vez
+            if (e.touches.length > 1) {
+                e.preventDefault();
+            }
+        }, { passive: false });
+    });
+
     // ===== DADOS DO JOGO =====
     // Edite este array para modificar as pistas, respostas e histórias
     // Formato de cada pista:
@@ -99,6 +121,11 @@ document.addEventListener('DOMContentLoaded', () => {
         treasureScreen.classList.add('hidden');
         displayCurrentClue();
         updateProgress();
+        
+        // Foco no input após um pequeno delay para mobile
+        setTimeout(() => {
+            answerInputElement.focus();
+        }, 300);
     }
 
     /**
@@ -111,6 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
             feedbackMessageElement.textContent = '';
             answerInputElement.value = '';
             answerInputElement.setAttribute('autocomplete', 'off');
+            answerInputElement.setAttribute('spellcheck', 'false');
             answerInputElement.focus();
             showClueGif(currentClueIndex);
             updateProgress();
@@ -165,7 +193,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Função para mostrar gif animado ---
     function showClueGif(index) {
         if (clueGifs[index]) {
-            clueGifElement.innerHTML = `<img src="${clueGifs[index]}" alt="gif animado" style="max-width: 150px; border-radius: 8px;">`;
+            clueGifElement.innerHTML = `<img src="${clueGifs[index]}" alt="gif animado" style="max-width: 150px; max-height: 150px; width: auto; height: auto; border-radius: 8px; object-fit: contain;">`;
         } else {
             clueGifElement.innerHTML = '';
         }
@@ -196,6 +224,7 @@ document.addEventListener('DOMContentLoaded', () => {
             conf.style.opacity = 0.85;
             conf.style.zIndex = 9999;
             conf.style.transition = 'top 1.8s cubic-bezier(.23,1.02,.64,1), transform 1.8s';
+            conf.style.pointerEvents = 'none'; // Evita interferência com toques
             document.body.appendChild(conf);
             setTimeout(() => {
                 conf.style.top = (Math.random()*60+30)+'vh';
@@ -231,6 +260,30 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     restartButton.addEventListener('click', restartGame);
+
+    // Melhorias para dispositivos móveis
+    // Prevenção de zoom em double-tap nos botões
+    const buttons = document.querySelectorAll('button');
+    buttons.forEach(button => {
+        button.addEventListener('touchstart', function(e) {
+            // Adiciona feedback visual imediato
+            this.style.transform = 'scale(0.98)';
+        });
+        
+        button.addEventListener('touchend', function(e) {
+            // Remove feedback visual
+            this.style.transform = '';
+        });
+    });
+
+    // Foco automático no input quando a tela de pista é mostrada
+    clueScreen.addEventListener('transitionend', function() {
+        if (!clueScreen.classList.contains('hidden')) {
+            setTimeout(() => {
+                answerInputElement.focus();
+            }, 100);
+        }
+    });
 
     // Inicialização
     startScreen.classList.remove('hidden');
