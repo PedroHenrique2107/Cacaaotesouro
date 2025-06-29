@@ -11,22 +11,22 @@ document.addEventListener('DOMContentLoaded', () => {
     // }
     const gameData = [
         {
-            clue: "Sou o lugar onde os sonhos são assados e a manhã começa com um cheiro delicioso. Onde a gente compra pão fresquinho?",
-            answer: "a",
-            story: "Primeira pista encontrada! O suspeito frequentava este local todas as manhãs..."
+            clue: "Sou um pequeno frasco cheio de microrganismos do bem que entram no seu corpo para cuidar da sua barriga em silêncio.",
+            answer: "Chamito",
+            story: "Primeira pista encontrada arrasou mulher! Vá para geladeira e pegue o chamito."
         },
         {
-            clue: "Tenho muitas histórias, mas não falo. Guardo conhecimento em minhas páginas e sou amigo dos estudantes. O que sou?",
-            answer: "a",
-            story: "Excelente trabalho! O suspeito deixou um rastro de conhecimento..."
+            clue: "Sou gostoso e pequeno, gosto de trazer um gosto de infância, cada ano que passa me valorizam mais e mais. Vamos concordar além de gostoso sou muito buenito hehe.",
+            answer: "Kinder Bueno",
+            story: "Excelente trabalho! Essa foi fácil né kkkk, ache ele na 1º gaveta da cômoda, novas pistas"
         },
         {
-            clue: "De dia estou cheio, à noite vazio. Alimento a mente e o corpo. O que é o local onde você mais passa tempo na faculdade?",
-            answer: "a",
-            story: "Você está chegando perto! O suspeito frequentava este local regularmente..."
+            clue: "Sou bem doce, amei quando me apresentou ao seu noivo recentemente, sem dúvidas sou melhor que a concorrência FAMOSA e NUTELA que tem hoje rsrsrs, odeio quando falam que sou feito de Creme de avelã",
+            answer: "OvoMaltine",
+            story: "Você está chegando perto! Próxima parte saberá onde estará a arma do crime!!"
         },
         {
-            treasure: "Parabéns, agente! Você desvendou todos os enigmas e encontrou o tesouro! Sua dedicação e inteligência foram fundamentais para o sucesso desta missão. Aqui está sua recompensa especial!"
+            treasure: "Parabéns, agente! Você desvendou todos os enigmas. E aqui quero desejar meus parabêns, graças a sua inteligência e dedicação você conseguiu chegar ao final, espero ter gostado e se divertido com esse mini jogo feito especialmente para você. Dê um beijo ao seu noivo que se dedicou a tempo para que tudo isso fosse possível de acontecer!! Se dirigir para sua caixinha no guarda roupa. "
         }
     ];
 
